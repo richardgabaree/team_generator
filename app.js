@@ -59,12 +59,20 @@ function addManager(){
             message = "What is the managers ID number"
         },
         {
+            type: "input",
+            name: "managerEmail",
+            message: "What is your manager's email?",
+        },
+        {
             type = "input",
             name = "officeNumber",
             message = "What is the managers office number",
         }
-    ]
-    )
+    ]).then(answers) => 
+        var manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
+        teamMembers.push(manager);
+        createTeam();
+    
 }
 
 

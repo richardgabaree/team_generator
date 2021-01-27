@@ -1,0 +1,13 @@
+.jumbotron {
+    background-color: rgb(44, 103, 110);
+    color: aliceblue;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 5rem;
+}
+
+.team {
+    background-color: rgb(125, 128, 131);
+}
