@@ -1,4 +1,4 @@
-const Employee = require("./lib/Employee");
+// const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -14,9 +14,11 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 const teamMembers = [];
+// function buildPage() {
 function buildPage() {
-    fs.writeFileSync(outputPath, render(teamMembers), utf-8)
+fs.writeFileSync(outputPath, render(teamMembers), "utf8")
 }
+
 
 function buildTeam() {
     fs.writeFileSync(outputPath, render(teamMembers), "utf8")
@@ -73,7 +75,7 @@ function addManager(){
             message: "What is the managers office number",
         }
     ]).then(answers => {
-        var Manager = new Manager
+       const Manager = new Manager
             (answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
         teamMembers.push(manager);
         createTeam();
@@ -141,6 +143,8 @@ function addEngineer(){
              createTeam();
            });
          }
+    
+         createTeam();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
