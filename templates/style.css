@@ -11,3 +11,9 @@ h1 {
 .team {
     background-color: rgb(125, 128, 131);
 }
+
+#cardbody {
+    background-color: rgb(156, 158, 160);
+    font-family: monospace;
+
+}
