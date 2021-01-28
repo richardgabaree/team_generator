@@ -13,15 +13,13 @@ const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
-const teamMembers = [];
+const outputPath = path.resolve
 // function buildPage() {
-function buildPage() {
-fs.writeFileSync(outputPath, render(teamMembers), "utf8")
-}
 
 
+var teanMembers = [];
 function buildTeam() {
-    fs.writeFileSync(outputPath, render(teamMembers), "utf8")
+    fs.writeFileSync(outputPath, render(teamMembers), "utf-8")
 }
 
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -61,7 +59,7 @@ function addManager(){
         },
         {
             type: "input",
-            name: "mangerID",
+            name: "mangerId",
             message: "What is the managers ID number"
         },
         {
@@ -75,10 +73,11 @@ function addManager(){
             message: "What is the managers office number",
         }
     ]).then(answers => {
-       const Manager = new Manager
+       const manager = new Manager
             (answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
         teamMembers.push(manager);
         createTeam();
+
     })
 }
 
@@ -88,7 +87,6 @@ function addEngineer(){
         type: "input",
         name: "engineerName",
         message: "What is the name?",
-      
       },
       {
         type: "input",
@@ -105,46 +103,53 @@ function addEngineer(){
       {
         type: "input",
         name: "engineerGithub",
-        message: "What is your engineer's GitHub username?",
-        
+        message: "What is your engineer's GitHub username?", 
       }
-    ]).then(answers => {
-      const Engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-      teamMembers.push(engineer);
-      createTeam();
-    });
-  }
 
-  function addIntern(){
-      inquire.prompt([
-          {
-              type: "input",
-              name: "internName",
-              message: "What is the interns name?"
-            },
-            {
-                type: "input",
-                name: "internId",
-                message: "What is the interns ID number?"
-            },
-            {
-                type: "input",
-                name: "internEmail",
-                message: "What is the interns email",
-            },
-            {
-                type: "input",
-                name: "internSchool"
-            }
-         ]).then(answers => {
-             const Intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-             teamMembers.push(intern);
-             
-             createTeam();
-           });
-         }
-    
+    ]).then(answers => {
+        const engineer = new Engineer
+             (answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+         teamMembers.push(engineer);
          createTeam();
+        })
+    }
+ 
+    function addIntern() {
+        inquirer.prompt([
+          {
+            type: "input",
+            name: "internName",
+            message: "What is your interns name?",
+            
+          },
+          {
+            type: "input",
+            name: "internId",
+            message: "What is your interns id?",
+            
+          },
+          {
+            type: "input",
+            name: "internEmail",
+            message: "What is your interns email?",
+            
+          },
+          {
+            type: "input",
+            name: "internSchool",
+            message: "What school does the inter attend?",
+            
+          }
+        ]).then(answers => {
+          const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+          teamMembers.push(intern);
+          
+          createTeam();
+    });
+}
+createTeam();
+
+// }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
