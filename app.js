@@ -13,14 +13,17 @@ const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
-const outputPath = path.resolve
-// function buildPage() {
 
 
-var teanMembers = [];
-function buildTeam() {
-    fs.writeFileSync(outputPath, render(teamMembers), "utf-8")
+var teamMembers = [];
+function buildPage(){
+   console.log(teamMembers) 
+   // fs.writeFileSync(outputPath, render(teamMembers), "utf-8")
+    fs.writeFile(outputPath, render(teamMembers), (err) =>
+    err ? console.error(err) : console.log('Success!')
+    )
 }
+
 
 // and to create objects for each team member (using the correct classes as blueprints!)
 function createTeam(){
@@ -37,15 +40,14 @@ function createTeam(){
             case "Manager":
                 addManager();
                     break;
-            case "Employee":
-                addEmployee();
-                    break;
             case "Engineer":
                 addEngineer();
                     break;
             case "Intern":
                 addIntern();
                     break;
+            case "No more team members to add":
+                buildPage();
         }
     });
 }
@@ -146,7 +148,8 @@ function addEngineer(){
           
           createTeam();
     });
-}
+    }
+
 createTeam();
 
 // }
