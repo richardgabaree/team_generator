@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -52,34 +53,94 @@ function createTeam(){
 function addManager(){
     inquirer.prompt([
         {
-            type = "input",
-            name = "managerName",
-            message = "What is the managers name",
+            type: "input",
+            name: "managerName",
+            message: "What is the managers name",
         },
         {
-            type = "input",
-            name = "mangerID",
-            message = "What is the managers ID number"
+            type: "input",
+            name: "mangerID",
+            message: "What is the managers ID number"
         },
         {
             type: "input",
             name: "managerEmail",
-            message: "What is your manager's email?",
+            message: "What is your managers email?",
         },
         {
-            type = "input",
-            name = "officeNumber",
-            message = "What is the managers office number",
+            type: "input",
+            name: "officeNumber",
+            message: "What is the managers office number",
         }
     ]).then(answers => {
-        var manager = new Manager
+        var Manager = new Manager
             (answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
         teamMembers.push(manager);
         createTeam();
     })
 }
 
+function addEngineer(){
+    inquirer.prompt([
+      {
+        type: "input",
+        name: "engineerName",
+        message: "What is the name?",
+      
+      },
+      {
+        type: "input",
+        name: "engineerId",
+        message: "What is your engineer's id?",
+        
+      },
+      {
+        type: "input",
+        name: "engineerEmail",
+        message: "What is your engineer's email?",
+        
+      },
+      {
+        type: "input",
+        name: "engineerGithub",
+        message: "What is your engineer's GitHub username?",
+        
+      }
+    ]).then(answers => {
+      const Engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+      teamMembers.push(engineer);
+      createTeam();
+    });
+  }
 
+  function addIntern(){
+      inquire.prompt([
+          {
+              type: "input",
+              name: "internName",
+              message: "What is the interns name?"
+            },
+            {
+                type: "input",
+                name: "internId",
+                message: "What is the interns ID number?"
+            },
+            {
+                type: "input",
+                name: "internEmail",
+                message: "What is the interns email",
+            },
+            {
+                type: "input",
+                name: "internSchool"
+            }
+         ]).then(answers => {
+             const Intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+             teamMembers.push(intern);
+             
+             createTeam();
+           });
+         }
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
