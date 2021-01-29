@@ -3,6 +3,8 @@
   # Title 
     Team Generator
 
+  ![webpage](/templates/assets/webpage.png)
+
   ## Description 
     AS A manager, I WANT to generate a webpage that displays my team's basic info so I have quick access to their emails, id numbers, office location, schools and GitHub profiles as needed
 
