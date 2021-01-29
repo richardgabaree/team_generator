@@ -38,5 +38,5 @@
 
     * Project Link - https://richardgabaree.github.io/team_generator/
 
-    * Video Link - 
+    * [![Demo Video](/templates/assets/webpage.png)](https://drive.google.com/file/d/1K5xWO1034nkLw9REol-MNOwteRb01Rn4/view?usp=sharing "click to go to demo video")
   
